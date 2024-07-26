@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserComponent } from './components/user/user.component';
 import { AccountModule } from './modules/account/account.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AccountModule } from './modules/account/account.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AccountModule
+    AccountModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
