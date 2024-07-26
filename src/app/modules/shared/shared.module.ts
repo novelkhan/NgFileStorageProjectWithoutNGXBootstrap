@@ -16,6 +16,9 @@ import { UserHasRoleDirective } from './directives/user-has-role.directive';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ValidationMessagesComponent // Export the component here
   ]
 })
 export class SharedModule { }
