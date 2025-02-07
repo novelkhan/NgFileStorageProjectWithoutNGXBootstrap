@@ -7,6 +7,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { SendEmailComponent } from './components/send-email/send-email.component';
+import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { SendEmailComponent } from './components/send-email/send-email.component
   ],
   imports: [
     CommonModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class AccountModule { }

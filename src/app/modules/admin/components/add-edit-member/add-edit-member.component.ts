@@ -5,7 +5,6 @@ import { MemberAddEdit } from "src/app/modules/shared/models/admin/memberAddEdit
 import { SharedService } from "src/app/modules/shared/services/shared.service";
 import { AdminService } from "../../services/admin.service";
 
-
 @Component({
   selector: 'app-add-edit-member',
   templateUrl: './add-edit-member.component.html',
@@ -20,12 +19,13 @@ export class AddEditMemberComponent implements OnInit {
   applicationRoles: string[] = [];
   existingMemberRoles: string[] = [];
 
-  constructor(private adminService: AdminService,
+  constructor(
+    private adminService: AdminService,
     private sharedService: SharedService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
-
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -44,7 +44,7 @@ export class AddEditMemberComponent implements OnInit {
       next: member => {
         this.initializeForm(member);
       }
-    })
+    });
   }
 
   getRoles() {
@@ -82,7 +82,7 @@ export class AddEditMemberComponent implements OnInit {
   }
 
   passwordOnChange() {
-    if (this.addNew == false) {
+    if (!this.addNew) {
       if (this.memberForm.get('password')?.value) {
         this.memberForm.controls['password'].setValidators([Validators.required, Validators.minLength(6), Validators.maxLength(15)]);
       } else {
@@ -109,11 +109,10 @@ export class AddEditMemberComponent implements OnInit {
     this.submitted = true;
     this.errorMessages = [];
 
-
     if (this.memberForm.valid) {
       this.adminService.addEditMember(this.memberForm.value).subscribe({
         next: (response: any) => {
-          this.sharedService.showNotification(true, response.value.titile, response.value.message);
+          this.sharedService.showNotification(true, response.value.title, response.value.message);
           this.router.navigateByUrl('/admin');
         },
         error: error => {
@@ -123,7 +122,7 @@ export class AddEditMemberComponent implements OnInit {
             this.errorMessages.push(error.error);
           }
         }
-      })
+      });
     }
   }
 }
